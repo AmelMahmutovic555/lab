@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Songs Homepage - Welcome to My Music Store</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to My Music Store</h1>
+</header>
+<main>
+    <h2>Choose a song:</h2>
+    <form th:action="@{/listSongs}" th:method="POST">
+        <li th:each="song : ${songs}" style="list-style-type: none">
+            <div>
+                Title: <span th:text="${song.title}"></span>,
+                Genre: <span th:text="${song.genre}"></span>,
+                Release Year: <span th:text="${song.releaseYear}"></span>,
+                Album: <span th:text="${song.album.name}"></span>
+                <a th:href="@{/songs/edit-form/{id}(id=${song.id})}">Edit</a>
+                <a th:href="@{/songs/delete/{id}(id=${song.id})}">Delete</a>
+            </div>
+        </li>
+        <a th:href="@{/songs/add-form}">Add New Song</a>
+        <input type='submit' value='Submit'>
+    </form>
+</main>
+</body>
+</html>
