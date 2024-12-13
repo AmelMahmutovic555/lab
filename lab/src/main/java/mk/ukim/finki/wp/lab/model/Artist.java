@@ -7,19 +7,28 @@ import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @NoArgsConstructor
+@Data
 @Entity
 public class Artist {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String bio;
+//    private String firstName;
+//    private String lastName;
+//    private String bio;
 
-    public Artist(Long id, String firstName, String lastName, String bio) {
-        this.id = id;
+    private int firstName;
+    private int lastName;
+    private int bio;
+
+//    public Artist(String firstName, String lastName, String bio) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.bio = bio;
+//    }
+
+    public Artist(int firstName, int lastName, int bio) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.bio = bio;
@@ -33,27 +42,51 @@ public class Artist {
         this.id = id;
     }
 
-    public String getFirstName() {
+    public int getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(int firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public int getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(int lastName) {
         this.lastName = lastName;
     }
 
-    public String getBio() {
+    public int getBio() {
         return bio;
     }
 
-    public void setBio(String bio) {
+    public void setBio(int bio) {
         this.bio = bio;
     }
+
+    //    public String getFirstName() {
+//        return firstName;
+//    }
+//
+//    public void setFirstName(String firstName) {
+//        this.firstName = firstName;
+//    }
+//
+//    public String getLastName() {
+//        return lastName;
+//    }
+//
+//    public void setLastName(String lastName) {
+//        this.lastName = lastName;
+//    }
+//
+//    public String getBio() {
+//        return bio;
+//    }
+//
+//    public void setBio(String bio) {
+//        this.bio = bio;
+//    }
 }

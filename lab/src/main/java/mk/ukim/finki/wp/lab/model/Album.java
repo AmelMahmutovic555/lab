@@ -1,28 +1,44 @@
 package mk.ukim.finki.wp.lab.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+import java.util.List;
+
 @NoArgsConstructor
+@Data
 @Entity
 public class Album {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
-    private String name;
-    private String genre;
-    private String releaseYear;
 
-    public Album(Long id, String name, String genre, String releaseYear) {
-        this.id = id;
+//    @Column(columnDefinition = "TEXT")
+    private int name;
+
+//    @Column(columnDefinition = "TEXT")
+    private int genre;
+
+//    @Column(columnDefinition = "TEXT")
+    private int releaseYear;
+
+//    @OneToMany(mappedBy = "album")
+//    private List<Song> song;
+
+
+//    public Album(String name, String genre, String releaseYear) {
+//        this.name = name;
+//        this.genre = genre;
+//        this.releaseYear = releaseYear;
+////        this.song = song;
+//    }
+
+    public Album(int name, int genre, int releaseYear) {
         this.name = name;
         this.genre = genre;
         this.releaseYear = releaseYear;
+//        this.song = song;
     }
 
     public Long getId() {
@@ -33,27 +49,51 @@ public class Album {
         this.id = id;
     }
 
-    public String getName() {
+    public int getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(int name) {
         this.name = name;
     }
 
-    public String getGenre() {
+    public int getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(int genre) {
         this.genre = genre;
     }
 
-    public String getReleaseYear() {
+    public int getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(String releaseYear) {
+    public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
     }
+
+    //    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public String getGenre() {
+//        return genre;
+//    }
+//
+//    public void setGenre(String genre) {
+//        this.genre = genre;
+//    }
+//
+//    public String getReleaseYear() {
+//        return releaseYear;
+//    }
+//
+//    public void setReleaseYear(String releaseYear) {
+//        this.releaseYear = releaseYear;
+//    }
 }

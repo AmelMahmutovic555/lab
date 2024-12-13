@@ -7,9 +7,10 @@
 <body>
 <form th:action="@{/songs/add}" th:if="${song == null}" method="post">
   <input type="text" name="title" placeholder="Title" required>
-  <input type="text" name="trackId" placeholder="Track ID" required>
+<!--  <input type="text" name="trackId" placeholder="Track ID" required>-->
   <input type="text" name="genre" placeholder="Genre" required>
   <input type="number" name="releaseYear" placeholder="Release Year" required>
+  <input type="number" name="priceObject" th:value="price" required>
   <select name="albumId" required>
     <option th:each="album : ${albums}" th:value="${album.id}" th:text="${album.name}"></option>
   </select>
@@ -18,9 +19,10 @@
 
 <form th:action="@{/songs/edit/{id}(id=${song.id})}" th:if="${song != null}" method="post">
   <input type="text" name="title" th:value="${song.title}" required>
-  <input type="text" name="trackId" th:value="${song.trackId}" required>
+<!--  <input type="text" name="trackId" th:value="${song.trackId}" required>-->
   <input type="text" name="genre" th:value="${song.genre}" required>
   <input type="number" name="releaseYear" th:value="${song.releaseYear}" required>
+  <input type="number" name="priceObject" th:value="price" required>
   <select name="albumId" required>
     <option th:each="album : ${albums}" th:value="${album.id}" th:text="${album.name}"
             th:selected="${song.album.id == album.id}"></option>

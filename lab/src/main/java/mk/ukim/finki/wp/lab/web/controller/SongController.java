@@ -25,14 +25,6 @@ public class SongController {
         this.artistService = artistService;
     }
 
-//    @GetMapping
-//    public String getSongsPage(@RequestParam(required = false) String error, Model model) {
-//        List<Song> songs = songService.listSongs();
-//        model.addAttribute("songs", songs);
-//        model.addAttribute("error", error);
-//        return "listSongs";
-//    }
-
     @GetMapping
     public String getSongsPage(@RequestParam(required = false) String error, Model model) {
         model.addAttribute("songs", songService.listSongs());
@@ -43,24 +35,18 @@ public class SongController {
 
     @PostMapping("/add")
     public String saveSong(
-            @RequestParam String title,
-            @RequestParam String trackId,
-            @RequestParam String genre,
-            @RequestParam int releaseYear,
-            @RequestParam Long albumId) {
-        songService.saveSong(title, trackId, genre, releaseYear, albumId);
+            @RequestParam Song song
+            ) {
+        songService.saveSong(song);
         return "redirect:/songs";
     }
 
     @PostMapping("/edit/{songId}")
     public String editSong(
             @PathVariable Long songId,
-            @RequestParam String title,
-            @RequestParam String trackId,
-            @RequestParam String genre,
-            @RequestParam int releaseYear,
-            @RequestParam Long albumId) {
-        songService.editSong(songId, title, trackId, genre, releaseYear, albumId);
+            @RequestParam Song song
+            ) {
+        songService.editSong(song);
         return "redirect:/songs";
     }
 
@@ -87,4 +73,8 @@ public class SongController {
         return "add-song";
     }
 
+    @PostMapping
+    public String artistRedirect(){
+        return "artistsList";
+    }
 }

@@ -2,6 +2,10 @@ package mk.ukim.finki.wp.lab.modelHolder;
 
 import jakarta.annotation.PostConstruct;
 import mk.ukim.finki.wp.lab.model.Album;
+import mk.ukim.finki.wp.lab.repository.AlbumRepository;
+import mk.ukim.finki.wp.lab.repository.AlbumRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,13 +14,19 @@ import java.util.List;
 @Component
 public class AlbumHolder {
     public static List<Album> albumList = new ArrayList<>();
+    private final AlbumRepository albumRepository;
+
+    public AlbumHolder(AlbumRepository albumRepository) {
+        this.albumRepository = albumRepository;
+    }
 
     @PostConstruct
     public void init(){
-        albumList.add(new Album(1L,"AlbumName1", "Pop", "2010"));
-        albumList.add(new Album(2L,"AlbumName2", "Pop", "2005"));
-        albumList.add(new Album(3L,"AlbumName3", "Pop", "2013"));
-        albumList.add(new Album(4L,"AlbumName4", "Pop", "2020"));
-        albumList.add(new Album(5L,"AlbumName5", "Pop", "2015"));
+
+        albumRepository.save(new Album(1,1,2010));
+        albumRepository.save(new Album(2, 2, 2010));
+        albumRepository.save(new Album(3, 3, 2013));
+        albumRepository.save(new Album(4, 4, 2020));
+        albumRepository.save(new Album(5, 5, 2015));
     }
 }

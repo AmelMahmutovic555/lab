@@ -34,14 +34,14 @@ public class ArtistServlet extends HttpServlet {
         List<Artist> artists = artistService.listArtists();
         String trackId = req.getParameter("trackId");
         String artistId = req.getParameter("artistId");
-        Song song = songService.findByTrackId(trackId);
+//        Song song = songService.findByTrackId(trackId);
 
         IWebExchange webExchange = JakartaServletWebApplication.buildApplication(getServletContext()).buildExchange(req, resp);
         WebContext context = new WebContext(webExchange);
 
         context.setVariable("artists", artists);
         context.setVariable("selectedTrackId", trackId);
-        context.setVariable("song", song);
+//        context.setVariable("song", song);
 
         springTemplateEngine.process("artistsList.html", context, resp.getWriter());
     }

@@ -35,7 +35,7 @@ public class SongDetailsServlet extends HttpServlet {
         String trackId = req.getParameter("trackId");
         String artistId = req.getParameter("artistId");
 
-        Song song = songService.findByTrackId(trackId);
+//        Song song = songService.findByTrackId(trackId);
 
         List<Artist> newList = new ArrayList<>();
 
@@ -52,7 +52,7 @@ public class SongDetailsServlet extends HttpServlet {
         WebContext context = new WebContext(webExchange);
 
         context.setVariable("artists", newList);
-        context.setVariable("song", song);
+//        context.setVariable("song", song);
 
         springTemplateEngine.process("songDetails.html", context, resp.getWriter());
     }

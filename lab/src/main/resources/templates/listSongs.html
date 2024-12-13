@@ -15,7 +15,7 @@
 </header>
 <main>
     <h2>Choose a song:</h2>
-    <form th:action="@{/listSongs}" th:method="POST">
+    <form th:action="@{/songs}" th:method="POST">
         <li th:each="song : ${songs}" style="list-style-type: none">
             <div>
                 Title: <span th:text="${song.title}"></span>,
