@@ -18,17 +18,11 @@ public class Artist {
 //    private String lastName;
 //    private String bio;
 
-    private int firstName;
-    private int lastName;
-    private int bio;
+    private String firstName;
+    private String lastName;
+    private String bio;
 
-//    public Artist(String firstName, String lastName, String bio) {
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.bio = bio;
-//    }
-
-    public Artist(int firstName, int lastName, int bio) {
+    public Artist(String firstName, String lastName, String bio) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.bio = bio;
@@ -42,51 +36,27 @@ public class Artist {
         this.id = id;
     }
 
-    public int getFirstName() {
+        public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(int firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public int getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(int lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public int getBio() {
+    public String getBio() {
         return bio;
     }
 
-    public void setBio(int bio) {
+    public void setBio(String bio) {
         this.bio = bio;
     }
-
-    //    public String getFirstName() {
-//        return firstName;
-//    }
-//
-//    public void setFirstName(String firstName) {
-//        this.firstName = firstName;
-//    }
-//
-//    public String getLastName() {
-//        return lastName;
-//    }
-//
-//    public void setLastName(String lastName) {
-//        this.lastName = lastName;
-//    }
-//
-//    public String getBio() {
-//        return bio;
-//    }
-//
-//    public void setBio(String bio) {
-//        this.bio = bio;
-//    }
 }

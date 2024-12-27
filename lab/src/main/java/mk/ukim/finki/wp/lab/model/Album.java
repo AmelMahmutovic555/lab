@@ -15,26 +15,19 @@ public class Album {
     private Long id;
 
 //    @Column(columnDefinition = "TEXT")
-    private int name;
+    private String name;
 
 //    @Column(columnDefinition = "TEXT")
-    private int genre;
+    private String genre;
 
 //    @Column(columnDefinition = "TEXT")
-    private int releaseYear;
+    private String releaseYear;
 
-//    @OneToMany(mappedBy = "album")
-//    private List<Song> song;
+    @OneToMany(mappedBy = "album")
+    private List<Song> song;
 
 
-//    public Album(String name, String genre, String releaseYear) {
-//        this.name = name;
-//        this.genre = genre;
-//        this.releaseYear = releaseYear;
-////        this.song = song;
-//    }
-
-    public Album(int name, int genre, int releaseYear) {
+    public Album(String name, String genre, String releaseYear) {
         this.name = name;
         this.genre = genre;
         this.releaseYear = releaseYear;
@@ -49,51 +42,27 @@ public class Album {
         this.id = id;
     }
 
-    public int getName() {
+        public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public int getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(int genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
-    public int getReleaseYear() {
+    public String getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
+    public void setReleaseYear(String releaseYear) {
         this.releaseYear = releaseYear;
     }
-
-    //    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getGenre() {
-//        return genre;
-//    }
-//
-//    public void setGenre(String genre) {
-//        this.genre = genre;
-//    }
-//
-//    public String getReleaseYear() {
-//        return releaseYear;
-//    }
-//
-//    public void setReleaseYear(String releaseYear) {
-//        this.releaseYear = releaseYear;
-//    }
 }

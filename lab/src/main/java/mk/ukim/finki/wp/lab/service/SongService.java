@@ -8,7 +8,7 @@ import java.util.List;
 public interface SongService {
     List<Song> listSongs();
     Artist addArtistToSong(Artist artist, Song song);
-//    Song findByTrackId(String trackId);
+    Song findByTrackId(String trackId);
     void saveSong(Song song);
     void editSong(Song song);
     void deleteSong(Long id);

@@ -33,10 +33,10 @@ public class SongServiceImpl implements SongService {
     }
 
 
-//    @Override
-//    public Song findByTrackId(String trackId) {
-//        return songRepository.findByTrackId(trackId);
-//    }
+    @Override
+    public Song findByTrackId(String trackId) {
+        return songRepository.findAll().stream().filter(traId -> traId.getTrackId().equals(trackId)).findFirst().orElse(null);
+    }
 
     @Override
     public void saveSong(Song song) {
@@ -55,7 +55,7 @@ public class SongServiceImpl implements SongService {
 
     @Override
     public Song findById(Long id) {
-        return songRepository.getReferenceById(id);
+        return songRepository.findById(id).orElse(null);
     }
 
     @Override

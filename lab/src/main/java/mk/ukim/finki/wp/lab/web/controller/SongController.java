@@ -1,6 +1,7 @@
 package mk.ukim.finki.wp.lab.web.controller;
 
 //import ch.qos.logback.core.model.Model;
+import mk.ukim.finki.wp.lab.model.Album;
 import mk.ukim.finki.wp.lab.model.Artist;
 import mk.ukim.finki.wp.lab.model.Song;
 import mk.ukim.finki.wp.lab.service.AlbumService;
@@ -33,23 +34,6 @@ public class SongController {
         return "listSongs";
     }
 
-    @PostMapping("/add")
-    public String saveSong(
-            @RequestParam Song song
-            ) {
-        songService.saveSong(song);
-        return "redirect:/songs";
-    }
-
-    @PostMapping("/edit/{songId}")
-    public String editSong(
-            @PathVariable Long songId,
-            @RequestParam Song song
-            ) {
-        songService.editSong(song);
-        return "redirect:/songs";
-    }
-
     @GetMapping("/delete/{id}")
     public String deleteSong(@PathVariable Long id) {
         songService.deleteSong(id);
@@ -73,8 +57,54 @@ public class SongController {
         return "add-song";
     }
 
+    @GetMapping("/login")
+    public String getLoginPage(){
+        return "login";
+    }
+
+    @PostMapping("/add")
+    public String saveSong(
+            @RequestParam String trackId,
+            @RequestParam String title,
+            @RequestParam String genre,
+            @RequestParam int releaseYear,
+            @RequestParam Long albumId
+            ) {
+        Album album = albumService.findById(albumId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid album ID"));
+        Song song = new Song(trackId, title, genre, releaseYear, album);
+        songService.saveSong(song);
+        return "redirect:/songs";
+    }
+
+    @PostMapping("/edit/{songId}")
+    public String editSong(
+            @PathVariable Long songId,
+            @RequestParam String trackId,
+            @RequestParam String title,
+            @RequestParam String genre,
+            @RequestParam int releaseYear,
+            @RequestParam Long albumId
+            ) {
+        Album album = albumService.findById(albumId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid album ID"));        Song song = new Song(trackId, title, genre, releaseYear, album);
+        song.setId(songId); // Ensure the ID is preserved for editing
+        songService.editSong(song);
+        return "redirect:/songs";
+    }
+
     @PostMapping
     public String artistRedirect(){
         return "artistsList";
+    }
+
+    @PostMapping("/login")
+    public String addLoginDetails(Model model){
+        String username = (String) model.getAttribute("username");
+        String password = (String) model.getAttribute("password");
+        if (username=="admin" && password=="admin"){
+            return "redirect:/songs";
+        }
+        return "redirect:/songs/login";
     }
 }
